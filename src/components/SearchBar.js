@@ -9,10 +9,14 @@ export default class SearchBar extends Component {
       term: e.target.value
     });
   };
+  onFormSubmit = e => {
+    e.preventDefault();
+    this.props.onSearchSubmit(this.state.term);
+  };
   render() {
     return (
       <div className="search-bar ui segment">
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.onFormSubmit}>
           <div className="field">
             <label>Video Search</label>
             <input
@@ -22,7 +26,6 @@ export default class SearchBar extends Component {
             />
           </div>
         </form>
-        {this.state.term}
       </div>
     );
   }
